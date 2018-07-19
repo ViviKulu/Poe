@@ -1,7 +1,11 @@
 package com.example.vivianbabiryekulumba.poe.recyclerview;
 
+import com.google.firebase.database.Exclude;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Poem{
 
@@ -49,6 +53,15 @@ public class Poem{
 
     public void setPoet(Poet poet) {
         this.poet = poet;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("title", title);
+        result.put("content", content);
+
+        return result;
     }
 
 }
