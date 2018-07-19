@@ -3,21 +3,21 @@ package com.example.vivianbabiryekulumba.poe.recyclerview;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-
-public class Poem {
+public class Poem{
 
     @SerializedName("title")
     @Expose
     private String title;
     @SerializedName("content")
     @Expose
-    private String content;
+    public String content;
     @SerializedName("url")
     @Expose
     private String url;
     @SerializedName("poet")
     @Expose
     private Poet poet;
+
 
     public String getTitle() {
         return title;
@@ -49,6 +49,6 @@ public class Poem {
 
     public void setPoet(Poet poet) {
         this.poet = poet;
-
     }
+
 }
