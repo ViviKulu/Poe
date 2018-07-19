@@ -3,7 +3,7 @@ package com.example.vivianbabiryekulumba.poe.recyclerview;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class Poet {
+public class Poet {
 
     @SerializedName("name")
     @Expose
