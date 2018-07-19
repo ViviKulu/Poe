@@ -1,47 +1,46 @@
 package com.example.vivianbabiryekulumba.poe;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.example.vivianbabiryekulumba.poe.network.PoeNetworkService;
 import com.example.vivianbabiryekulumba.poe.recyclerview.Poem;
 import com.example.vivianbabiryekulumba.poe.recyclerview.PoetAdapter;
+import com.example.vivianbabiryekulumba.poe.recyclerview.ThemeAdapter;
+
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class PoemActivity extends AppCompatActivity {
+public class ThemePracticeActivity extends AppCompatActivity {
 
-    private static final String TAG = "PoemActivity";
+    private static final String TAG = "ThemePracticeActivity";
+    TextView complete_theme_tv;
+    TextView theme_tv;
+    EditText theme_practice_et;
     Retrofit retrofit;
     private static List<Poem> poemList;
     RecyclerView recyclerView;
-    FloatingActionButton floatingActionButton;
+    ThemeAdapter themeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        recyclerView = findViewById(R.id.recycler);
-        floatingActionButton = findViewById(R.id.floating_button);
+        setContentView(R.layout.activity_theme_practice);
+        recyclerView = findViewById(R.id.theme_recycler_practice);
         getRetrofit();
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PoemActivity.this, ThemePracticeActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void getRetrofit() {
@@ -59,12 +58,10 @@ public class PoemActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "onResponse: success");
                     poemList = response.body();
-                    Log.d(TAG, "onResponse: " + poemList);
-                    PoetAdapter poetAdapter = new PoetAdapter(poemList);
-                    poetAdapter.notifyDataSetChanged();
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-                    recyclerView.setAdapter(poetAdapter);
-                    recyclerView.setLayoutManager(linearLayoutManager);
+                    themeAdapter = new ThemeAdapter(poemList);
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                    recyclerView.setAdapter(themeAdapter);
+                    recyclerView.setLayoutManager(layoutManager);
                 }
             }
 
@@ -73,10 +70,5 @@ public class PoemActivity extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
-    }
-
-    public void onClick(View v){
-        Intent intent = new Intent(PoemActivity.this, CardContentActivity.class);
-        startActivity(intent);
     }
 }

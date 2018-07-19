@@ -1,9 +1,12 @@
 package com.example.vivianbabiryekulumba.poe;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.vivianbabiryekulumba.poe.recyclerview.Poem;
@@ -23,13 +26,24 @@ public class CardContentActivity extends AppCompatActivity {
     TextView poem_title;
     TextView poem_content;
     DatabaseReference reference;
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_content);
+
         poem_title = findViewById(R.id.card_poem_title);
         poem_content = findViewById(R.id.card_poem_content);
+        floatingActionButton = findViewById(R.id.floating_button);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CardContentActivity.this, ThemePracticeActivity.class);
+                startActivity(intent);
+            }
+        });
 
         reference = FirebaseDatabase.getInstance().getReference();
 
@@ -62,6 +76,5 @@ public class CardContentActivity extends AppCompatActivity {
         childUpdates.put(contentKey, postValues);
 
         reference.updateChildren(childUpdates);
-
     }
 }
