@@ -1,6 +1,5 @@
 package com.example.vivianbabiryekulumba.poe.recyclerview;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,7 +17,6 @@ import static android.content.ContentValues.TAG;
 public class PoetAdapter extends RecyclerView.Adapter<PoetAdapter.PoemViewHolder> {
 
     private List<Poem> poemList;
-    Context context;
 
     public PoetAdapter(List<Poem> poemList) {
         this.poemList = poemList;
@@ -35,11 +33,11 @@ public class PoetAdapter extends RecyclerView.Adapter<PoetAdapter.PoemViewHolder
     @Override
     public void onBindViewHolder(@NonNull PoemViewHolder holder, int position) {
         holder.onBind(poemList.get(position));
-//        Log.d(TAG, "onBindViewHolder: " + poemList.get(position).getContent());
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = firebaseDatabase.getReference();
         reference.setValue(poemList.get(position));
+
         Log.d(TAG, "onBindViewHolder: " + reference);
     }
 

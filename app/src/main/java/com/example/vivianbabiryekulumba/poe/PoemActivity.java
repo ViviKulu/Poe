@@ -31,7 +31,6 @@ public class PoemActivity extends AppCompatActivity {
     Retrofit retrofit;
     private static List<Poem> poemList;
     RecyclerView recyclerView;
-    PoetAdapter poetAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
