@@ -35,32 +35,117 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floating_button"
-        android:layout_width="80dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:backgroundTint="#FF5733"
-        android:src="@drawable/baseline_add_black_18dp"
-        android:theme="@style/Widget.Design.FloatingActionButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.965"
-        />
+    <include layout="@layout/content_main" />
 
-    <ImageButton
-        android:id="@+id/menu_image"
-        android:layout_width="77dp"
-        android:layout_height="69dp"
+    <View
+        android:id="@+id/fabBGLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorTransBg"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/fab_layout_base"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/poe_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floating_button_base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/baseline_add_black_18dp"
+            android:backgroundTint="#FF5733"
+            android:theme="@style/Widget.Design.FloatingActionButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.965" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fab_layout_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floating_button_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:backgroundTint="#FF5733"
+            android:src="@drawable/round_explore"
+            android:theme="@style/Widget.Design.FloatingActionButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.965" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fab_layout_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floating_button_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:backgroundTint="#FF5733"
+            android:src="@drawable/round_my_work"
+            android:theme="@style/Widget.Design.FloatingActionButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.965" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fab_layout_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floating_button_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:backgroundTint="#FF5733"
+            android:src="@drawable/round_translate"
+            android:theme="@style/Widget.Design.FloatingActionButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.965" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

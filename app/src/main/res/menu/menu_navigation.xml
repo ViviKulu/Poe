@@ -19,7 +19,7 @@
         android:id="@+id/translate"
         android:title="@string/translate"
         android:visible="false"
-        android:icon="@drawable/google_translate"
+        android:icon="@drawable/round_translate"
         />
 
 
