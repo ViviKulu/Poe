@@ -1,17 +1,16 @@
 package com.example.vivianbabiryekulumba.poe;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import com.example.vivianbabiryekulumba.poe.network.PoeNetworkService;
 import com.example.vivianbabiryekulumba.poe.recyclerview.Poem;
@@ -30,55 +29,47 @@ public class PoemActivity extends AppCompatActivity {
     Retrofit retrofit;
     private static List<Poem> poemList;
     RecyclerView recyclerView;
-    FloatingActionButton floatingActionButton;
-    ImageButton imageButton;
+    View fabLayout;
+    FloatingActionButton fab_base, fab1, fab2, fab3;
+    LinearLayout ll_base, ll1, ll2, ll3;
+    boolean isFABOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = findViewById(R.id.recycler);
-        floatingActionButton = findViewById(R.id.floating_button);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PoemActivity.this, ThemePracticeActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        imageButton = findViewById(R.id.menu_image);
+        recyclerView = findViewById(R.id.recycler);
+        fabLayout = findViewById(R.id.fabBGLayout);
+        ll_base = findViewById(R.id.fab_layout_base);
+        ll1 = findViewById(R.id.fab_layout_1);
+        ll2 = findViewById(R.id.fab_layout_2);
+        ll3 = findViewById(R.id.fab_layout_3);
+        fab_base = findViewById(R.id.floating_button_base);
+        fab1 = findViewById(R.id.floating_button_1);
+        fab2 = findViewById(R.id.floating_button_2);
+        fab3 = findViewById(R.id.floating_button_3);
+
         getRetrofit();
 
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        fab_base.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu popupMenu = new PopupMenu(getApplicationContext(), v);
-                popupMenu.inflate(R.menu.menu_navigation);
-                invalidateOptionsMenu();
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()){
-                            case R.id.inspiration:
-                                Intent intent = new Intent(getApplicationContext(), PoemActivity.class);
-                                startActivity(intent);
-                                return true;
-                            case R.id.my_work:
-                                Intent intent1 = new Intent(getApplicationContext(), MyWorkActivity.class);
-                                startActivity(intent1);
-                                return true;
-                            case R.id.translate:
-                                Intent intent2 = new Intent(getApplicationContext(), TranslateActivity.class);
-                                startActivity(intent2);
-                            default:
-                        }
-                        return false;
-                    }
-                });
-                popupMenu.show();
+                if(!isFABOpen){
+                    showFABMenu();
+                }else{
+                    closeFABMenu();
+                }
             }
         });
+
+        fabLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeFABMenu();
+            }
+        });
+
     }
 
     public void getRetrofit() {
@@ -115,5 +106,61 @@ public class PoemActivity extends AppCompatActivity {
     public void onClick(View v){
         Intent intent = new Intent(PoemActivity.this, CardContentActivity.class);
         startActivity(intent);
+    }
+
+    private void showFABMenu(){
+        isFABOpen=true;
+        ll1.setVisibility(View.VISIBLE);
+        ll2.setVisibility(View.VISIBLE);
+        ll3.setVisibility(View.VISIBLE);
+        fabLayout.setVisibility(View.VISIBLE);
+
+        ll_base.animate().rotationBy(180);
+        ll1.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
+        ll2.animate().translationY(-getResources().getDimension(R.dimen.standard_100));
+        ll3.animate().translationY(-getResources().getDimension(R.dimen.standard_145));
+    }
+
+    private void closeFABMenu(){
+        isFABOpen=false;
+        fabLayout.setVisibility(View.GONE);
+        ll_base.animate().rotationBy(-180);
+        ll1.animate().translationY(0);
+        ll2.animate().translationY(0);
+        ll3.animate().translationY(0).setListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                if(!isFABOpen){
+                    ll1.setVisibility(View.GONE);
+                    ll2.setVisibility(View.GONE);
+                    ll3.setVisibility(View.GONE);
+                }
+
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(isFABOpen){
+            closeFABMenu();
+        }else{
+            super.onBackPressed();
+        }
     }
 }
