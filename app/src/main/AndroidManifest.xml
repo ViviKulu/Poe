@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".MyWorkActivity" />
-        <activity android:name=".TranslateActivity"></activity>
     </application>
 
 </manifest>

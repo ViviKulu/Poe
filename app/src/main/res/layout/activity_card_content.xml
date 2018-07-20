@@ -8,19 +8,26 @@
     android:fillViewport="true"
     tools:context=".CardContentActivity">
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <include layout="@layout/content_main" />
 
         <android.support.v7.widget.CardView
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="103dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="104dp"
             app:cardBackgroundColor="#fff"
             app:cardCornerRadius="1dp"
-            app:cardElevation="@dimen/cardview_compat_inset_shadow">
+            app:cardElevation="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/card_poem_title"
@@ -40,28 +47,159 @@
 
         </android.support.v7.widget.CardView>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floating_button"
-            android:layout_width="80dp"
-            android:layout_height="47dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginEnd="24dp"
-            android:backgroundTint="#FF5733"
-            android:src="@drawable/baseline_add_black_18dp"
-            android:theme="@style/Widget.Design.FloatingActionButton" />
-
         <ImageButton
             android:id="@+id/menu_image"
             android:layout_width="77dp"
             android:layout_height="69dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:contentDescription="@string/todo"
-            android:src="@drawable/poe_icon" />
+            android:src="@drawable/poe_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+        <View
+            android:id="@+id/fabBGLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorTransBg"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/fab_layout_base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="26dp"
+            android:layout_marginEnd="8dp"
+            app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floating_button_base"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/add"
+                android:backgroundTint="#FF5733"
+                android:theme="@style/Widget.Design.FloatingActionButton"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.965" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fab_layout_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="26dp"
+            android:layout_marginEnd="8dp"
+            app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floating_button_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/home"
+                android:backgroundTint="#FF5733"
+                android:theme="@style/Widget.Design.FloatingActionButton"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.965" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fab_layout_explore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+            android:layout_marginBottom="26dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floating_button_explore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="#FF5733"
+                android:src="@drawable/round_explore"
+                android:theme="@style/Widget.Design.FloatingActionButton"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.965" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/fab_layout_my_work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+            android:layout_marginBottom="26dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floating_button_my_work"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="#FF5733"
+                android:src="@drawable/round_my_work"
+                android:theme="@style/Widget.Design.FloatingActionButton"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.965" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fab_layout_translate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+            android:layout_marginBottom="26dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floating_button_translate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="#FF5733"
+                android:src="@drawable/round_translate"
+                android:theme="@style/Widget.Design.FloatingActionButton"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.965" />
+
+        </LinearLayout>
+
+
+
+    </android.support.constraint.ConstraintLayout>
 
 </ScrollView>

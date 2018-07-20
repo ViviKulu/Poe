@@ -8,10 +8,10 @@
 
     <dimen name="standard_12">12dp</dimen>
     <dimen name="standard_23">23dp</dimen>
-    <dimen name="standard_55">55dp</dimen>
-    <dimen name="standard_100">100dp</dimen>
-    <dimen name="standard_145">145dp</dimen>
-    <dimen name="standard_190">190dp</dimen>
+    <dimen name="standard_75">75dp</dimen>
+    <dimen name="standard_150">150dp</dimen>
+    <dimen name="standard_225">225dp</dimen>
+    <dimen name="standard_300">300dp</dimen>
 
 
 </resources>
