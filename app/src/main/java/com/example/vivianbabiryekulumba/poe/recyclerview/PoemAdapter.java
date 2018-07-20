@@ -14,13 +14,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.List;
 import static android.content.ContentValues.TAG;
 
-public class PoetAdapter extends RecyclerView.Adapter<PoetAdapter.PoemViewHolder> {
+public class PoemAdapter extends RecyclerView.Adapter<PoemAdapter.PoemViewHolder> {
 
     private List<Poem> poemList;
 
-    public PoetAdapter(List<Poem> poemList) {
+    public PoemAdapter(List<Poem> poemList) {
         this.poemList = poemList;
-        Log.d(TAG, "PoetAdapter: size of list here is" + poemList.size());
+        Log.d(TAG, "PoemAdapter: size of list here is" + poemList.size());
     }
 
     @NonNull

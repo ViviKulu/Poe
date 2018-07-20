@@ -1,22 +1,22 @@
 package com.example.vivianbabiryekulumba.poe;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.example.vivianbabiryekulumba.poe.network.PoeNetworkService;
 import com.example.vivianbabiryekulumba.poe.recyclerview.Poem;
-import com.example.vivianbabiryekulumba.poe.recyclerview.PoetAdapter;
 import com.example.vivianbabiryekulumba.poe.recyclerview.ThemeAdapter;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,7 +26,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ThemePracticeActivity extends AppCompatActivity {
 
     private static final String TAG = "ThemePracticeActivity";
-    TextView complete_theme_tv;
     TextView theme_tv;
     EditText theme_practice_et;
     Retrofit retrofit;
@@ -40,7 +39,7 @@ public class ThemePracticeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_theme_practice);
         recyclerView = findViewById(R.id.theme_recycler_practice);
         getRetrofit();
-
+        Toast.makeText(getApplicationContext(), "Complete the thought", Toast.LENGTH_SHORT).show();
     }
 
     public void getRetrofit() {
@@ -71,4 +70,6 @@ public class ThemePracticeActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
