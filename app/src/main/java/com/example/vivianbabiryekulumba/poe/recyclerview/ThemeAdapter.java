@@ -36,7 +36,7 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ThemeViewHol
 
     @Override
     public int getItemCount() {
-        return poemList.size();
+        return 1;
     }
 
     public class ThemeViewHolder extends RecyclerView.ViewHolder {
@@ -45,10 +45,8 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ThemeViewHol
 
         public ThemeViewHolder(View itemView) {
             super(itemView);
-
             theme = itemView.findViewById(R.id.theme_tv);
             practice = itemView.findViewById(R.id.theme_practice_et);
-
         }
 
         public void onBind(Poem poem) {

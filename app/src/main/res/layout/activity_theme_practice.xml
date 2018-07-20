@@ -4,11 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".ThemePracticeActivity">
 
    <android.support.v7.widget.RecyclerView
        android:id="@+id/theme_recycler_practice"
        android:layout_width="match_parent"
        android:layout_height="match_parent"/>
+
+   <ImageButton
+       android:id="@+id/menu_image"
+       android:layout_width="77dp"
+       android:layout_height="69dp"
+       android:layout_marginEnd="8dp"
+       android:layout_marginStart="8dp"
+       android:contentDescription="@string/todo"
+       android:src="@drawable/poe_icon"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="1.0"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

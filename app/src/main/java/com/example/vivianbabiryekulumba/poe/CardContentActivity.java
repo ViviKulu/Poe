@@ -6,7 +6,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.example.vivianbabiryekulumba.poe.recyclerview.Poem;
@@ -27,6 +32,7 @@ public class CardContentActivity extends AppCompatActivity {
     TextView poem_content;
     DatabaseReference reference;
     FloatingActionButton floatingActionButton;
+    ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,33 @@ public class CardContentActivity extends AppCompatActivity {
         poem_title = findViewById(R.id.card_poem_title);
         poem_content = findViewById(R.id.card_poem_content);
         floatingActionButton = findViewById(R.id.floating_button);
+        imageButton = findViewById(R.id.menu_image);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.support.v7.widget.PopupMenu popupMenu = new android.support.v7.widget.PopupMenu(getApplicationContext(), v);
+                popupMenu.inflate(R.menu.menu_navigation);
+                invalidateOptionsMenu();
+                popupMenu.setOnMenuItemClickListener(new android.support.v7.widget.PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.inspiration:
+                                Intent intent = new Intent(getApplicationContext(), PoemActivity.class);
+                                startActivity(intent);
+                                return true;
+                            case R.id.my_work:
+                                Intent intent1 = new Intent(getApplicationContext(), MyWorkActivity.class);
+                                startActivity(intent1);
+                                return true;
+                            default:
+                        }
+                        return false;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +98,7 @@ public class CardContentActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: success" + reference);
     }
 
-    public void writeToPost(){
+    public void writeToPost() {
         String titleKey = reference.child("title").push().getKey();
         String contentKey = reference.child("content").push().getKey();
         Poem poem = new Poem();
@@ -77,4 +110,5 @@ public class CardContentActivity extends AppCompatActivity {
 
         reference.updateChildren(childUpdates);
     }
+
 }

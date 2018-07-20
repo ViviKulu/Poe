@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Poe</string>
     <string name="five_daily_inspirations">Five Daily Inspirations</string>
+    <string name="begin_typing">What comes to mind …</string>
+    <string name="get_inspired">Get Inspired</string>
+    <string name="see_your_work">See your work</string>
+    <string name="todo">TODO</string>
+    <string name="translate">Translate</string>
 </resources>
