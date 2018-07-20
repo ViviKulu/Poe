@@ -15,6 +15,10 @@ public class MyWorkAdapter extends RecyclerView.Adapter<MyWorkAdapter.MyWorkView
     private List<MyWork> myWorkList;
     private static final String TAG = "MyWorkAdapter";
 
+    public MyWorkAdapter(List<MyWork> myWorkList) {
+        this.myWorkList = myWorkList;
+    }
+
     @NonNull
     @Override
     public MyWorkViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

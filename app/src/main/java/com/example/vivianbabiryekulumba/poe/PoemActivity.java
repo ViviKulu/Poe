@@ -52,21 +52,42 @@ public class PoemActivity extends AppCompatActivity {
 
         getRetrofit();
 
+        fabLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeFABMenu();
+            }
+        });
+
         fab_base.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!isFABOpen){
                     showFABMenu();
+                    fab1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(PoemActivity.this, ThemePracticeActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                    fab2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(PoemActivity.this, MyWorkActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                    fab3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //Make retrofit to google translate api and translate current content from poet
+                            //then with an intent take translated content to Card content activity.
+                        }
+                    });
                 }else{
                     closeFABMenu();
                 }
-            }
-        });
-
-        fabLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                closeFABMenu();
             }
         });
 
@@ -109,25 +130,27 @@ public class PoemActivity extends AppCompatActivity {
     }
 
     private void showFABMenu(){
-        isFABOpen=true;
+        isFABOpen= true;
+        ll_base.setVisibility(View.VISIBLE);
         ll1.setVisibility(View.VISIBLE);
         ll2.setVisibility(View.VISIBLE);
         ll3.setVisibility(View.VISIBLE);
+        ll_base.setVisibility(View.VISIBLE);
         fabLayout.setVisibility(View.VISIBLE);
 
-        ll_base.animate().rotationBy(180);
-        ll1.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
-        ll2.animate().translationY(-getResources().getDimension(R.dimen.standard_100));
-        ll3.animate().translationY(-getResources().getDimension(R.dimen.standard_145));
+        ll_base.animate().rotationBy(360);
+        ll1.animate().translationY(-getResources().getDimension(R.dimen.standard_75));
+        ll2.animate().translationY(-getResources().getDimension(R.dimen.standard_150));
+        ll3.animate().translationY(-getResources().getDimension(R.dimen.standard_225));
     }
 
     private void closeFABMenu(){
         isFABOpen=false;
         fabLayout.setVisibility(View.GONE);
-        ll_base.animate().rotationBy(-180);
-        ll1.animate().translationY(0);
-        ll2.animate().translationY(0);
-        ll3.animate().translationY(0).setListener(new Animator.AnimatorListener() {
+        ll_base.animate().rotationBy(-360);
+        ll1.animate().translationY(2);
+        ll2.animate().translationY(2);
+        ll3.animate().translationY(2).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
 
