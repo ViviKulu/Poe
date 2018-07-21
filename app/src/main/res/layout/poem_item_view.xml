@@ -11,14 +11,15 @@
         app:cardCornerRadius="1dp"
         app:cardElevation="@dimen/cardview_compat_inset_shadow"
         android:onClick="onClick"
-        android:layout_width="350dp"
-        android:layout_height="250dp"
+        android:layout_width="match_parent"
+        android:padding="50dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_marginTop="80dp">
 
     <TextView
         android:id="@+id/poem_title"
-        android:textSize="22sp"
+        android:textSize="16sp"
         android:textColor="#fff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +31,7 @@
         android:id="@+id/poet_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textColor="#fff"
         android:layout_marginTop="105dp"
         android:layout_marginStart="10dp"

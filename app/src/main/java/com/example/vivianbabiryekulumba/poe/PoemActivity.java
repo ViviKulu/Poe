@@ -3,14 +3,15 @@ package com.example.vivianbabiryekulumba.poe;
 import android.animation.Animator;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.vivianbabiryekulumba.poe.network.PoeNetworkService;
 import com.example.vivianbabiryekulumba.poe.recyclerview.Poem;
@@ -29,10 +30,11 @@ public class PoemActivity extends AppCompatActivity {
     Retrofit retrofit;
     private static List<Poem> poemList;
     RecyclerView recyclerView;
-    View fabLayout;
-    FloatingActionButton fab_base, fab1, fab2, fab3;
+    View menuTabLayout;
+    TextView menu_tab, tab1, tab2, tab3;
     LinearLayout ll_base, ll1, ll2, ll3;
-    boolean isFABOpen = false;
+    boolean isMenuOpen = false;
+    ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,45 +42,48 @@ public class PoemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.recycler);
-        fabLayout = findViewById(R.id.fabBGLayout);
-        ll_base = findViewById(R.id.fab_layout_base);
-        ll1 = findViewById(R.id.fab_layout_1);
-        ll2 = findViewById(R.id.fab_layout_2);
-        ll3 = findViewById(R.id.fab_layout_3);
-        fab_base = findViewById(R.id.floating_button_base);
-        fab1 = findViewById(R.id.floating_button_1);
-        fab2 = findViewById(R.id.floating_button_2);
-        fab3 = findViewById(R.id.floating_button_3);
+        menuTabLayout = findViewById(R.id.menuBGLayout);
+        ll_base = findViewById(R.id.menu_layout_base);
+        ll1 = findViewById(R.id.tab_layout_1);
+        ll2 = findViewById(R.id.tab_layout_2);
+        ll3 = findViewById(R.id.tab_layout_3);
+        menu_tab = findViewById(R.id.menu_tab);
+        tab1 = findViewById(R.id.tab1);
+        tab2 = findViewById(R.id.tab2);
+        tab3 = findViewById(R.id.tab3);
+        imageButton = findViewById(R.id.raven);
 
         getRetrofit();
 
-        fabLayout.setOnClickListener(new View.OnClickListener() {
+        menuTabLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                closeFABMenu();
+                closeTabMenu();
             }
         });
 
-        fab_base.setOnClickListener(new View.OnClickListener() {
+        hideTabs(tab1, tab2, tab3);
+
+        menu_tab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isFABOpen){
-                    showFABMenu();
-                    fab1.setOnClickListener(new View.OnClickListener() {
+                if(!isMenuOpen){
+                    showTabMenu();
+                    tab1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(PoemActivity.this, ThemePracticeActivity.class);
                             startActivity(intent);
                         }
                     });
-                    fab2.setOnClickListener(new View.OnClickListener() {
+                    tab2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(PoemActivity.this, MyWorkActivity.class);
                             startActivity(intent);
                         }
                     });
-                    fab3.setOnClickListener(new View.OnClickListener() {
+                    tab3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             //Make retrofit to google translate api and translate current content from poet
@@ -86,7 +91,7 @@ public class PoemActivity extends AppCompatActivity {
                         }
                     });
                 }else{
-                    closeFABMenu();
+                    closeTabMenu();
                 }
             }
         });
@@ -129,36 +134,48 @@ public class PoemActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void showFABMenu(){
-        isFABOpen= true;
+    private void hideTabs(TextView tab1, TextView tab2, TextView tab3) {
+        if (!isMenuOpen) {
+            tab1.setVisibility(View.INVISIBLE);
+            tab2.setVisibility(View.INVISIBLE);
+            tab3.setVisibility(View.INVISIBLE);
+        }else{
+            showTabMenu();
+        }
+    }
+
+    private void showTabMenu(){
+        isMenuOpen = true;
         ll_base.setVisibility(View.VISIBLE);
         ll1.setVisibility(View.VISIBLE);
         ll2.setVisibility(View.VISIBLE);
         ll3.setVisibility(View.VISIBLE);
         ll_base.setVisibility(View.VISIBLE);
-        fabLayout.setVisibility(View.VISIBLE);
+        menuTabLayout.setVisibility(View.VISIBLE);
 
         ll_base.animate().rotationBy(360);
-        ll1.animate().translationY(-getResources().getDimension(R.dimen.standard_75));
-        ll2.animate().translationY(-getResources().getDimension(R.dimen.standard_150));
-        ll3.animate().translationY(-getResources().getDimension(R.dimen.standard_225));
+        ll1.animate().translationY(-getResources().getDimension(R.dimen.standard_45));
+        ll2.animate().translationY(-getResources().getDimension(R.dimen.standard_65));
+        ll3.animate().translationY(-getResources().getDimension(R.dimen.standard_85));
     }
 
-    private void closeFABMenu(){
-        isFABOpen=false;
-        fabLayout.setVisibility(View.GONE);
+    private void closeTabMenu(){
+        isMenuOpen = false;
+        menuTabLayout.setVisibility(View.GONE);
         ll_base.animate().rotationBy(-360);
         ll1.animate().translationY(2);
         ll2.animate().translationY(2);
         ll3.animate().translationY(2).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
-
+                tab1.setVisibility(View.VISIBLE);
+                tab2.setVisibility(View.VISIBLE);
+                tab3.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                if(!isFABOpen){
+                if(!isMenuOpen){
                     ll1.setVisibility(View.GONE);
                     ll2.setVisibility(View.GONE);
                     ll3.setVisibility(View.GONE);
@@ -180,8 +197,8 @@ public class PoemActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(isFABOpen){
-            closeFABMenu();
+        if(isMenuOpen){
+            closeTabMenu();
         }else{
             super.onBackPressed();
         }

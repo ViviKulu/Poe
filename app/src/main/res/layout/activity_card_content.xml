@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,26 +8,39 @@
     android:fillViewport="true"
     tools:context=".CardContentActivity">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <include layout="@layout/content_main" />
 
-        <include layout="@layout/content_main" />
+    <ImageButton
+        android:id="@+id/raven"
+        android:layout_width="77dp"
+        android:layout_height="69dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/poe_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19">
 
         <android.support.v7.widget.CardView
-            android:layout_width="350dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="104dp"
             app:cardBackgroundColor="#fff"
             app:cardCornerRadius="1dp"
             app:cardElevation="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:contentPadding="@dimen/cardview_compat_inset_shadow">
 
             <TextView
                 android:id="@+id/card_poem_title"
@@ -35,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:textColor="#000"
-                android:textSize="17sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/card_poem_content"
@@ -43,163 +56,119 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:textColor="#000"
-                android:textSize="17sp" />
+                android:textSize="16sp" />
+
 
         </android.support.v7.widget.CardView>
 
-        <ImageButton
-            android:id="@+id/menu_image"
-            android:layout_width="77dp"
-            android:layout_height="69dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:contentDescription="@string/todo"
-            android:src="@drawable/poe_icon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    </ScrollView>
 
-        <View
-            android:id="@+id/fabBGLayout"
+    <View
+        android:id="@+id/menuBGLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorTransBg"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/menu_layout_base"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/menu_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menu"
+            android:textColor="#001b61"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tab_layout_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tab1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home"
+            android:textColor="#001b61"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tab_layout_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tab2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/view_your_work"
+            android:textColor="#001b61"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tab_layout_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tab3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/translate_poetry"
+            android:textColor="#001b61"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tab_layout_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tab4"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorTransBg"
-            android:visibility="gone" />
-
-        <LinearLayout
-            android:id="@+id/fab_layout_base"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="26dp"
-            android:layout_marginEnd="8dp"
-            app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:text="@string/save_this_draft_to_your_work"
+            android:textColor="#001b61"
+            android:textSize="16sp" />
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/floating_button_base"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:src="@drawable/add"
-                android:backgroundTint="#FF5733"
-                android:theme="@style/Widget.Design.FloatingActionButton"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.965" />
+    </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fab_layout_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="26dp"
-            android:layout_marginEnd="8dp"
-            app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/floating_button_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:src="@drawable/home"
-                android:backgroundTint="#FF5733"
-                android:theme="@style/Widget.Design.FloatingActionButton"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.965" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fab_layout_explore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
-            android:layout_marginBottom="26dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/floating_button_explore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:backgroundTint="#FF5733"
-                android:src="@drawable/round_explore"
-                android:theme="@style/Widget.Design.FloatingActionButton"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.965" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/fab_layout_my_work"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
-            android:layout_marginBottom="26dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/floating_button_my_work"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:backgroundTint="#FF5733"
-                android:src="@drawable/round_my_work"
-                android:theme="@style/Widget.Design.FloatingActionButton"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.965" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fab_layout_translate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
-            android:layout_marginBottom="26dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/floating_button_translate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:backgroundTint="#FF5733"
-                android:src="@drawable/round_translate"
-                android:theme="@style/Widget.Design.FloatingActionButton"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.965" />
-
-        </LinearLayout>
-
-
-
-    </android.support.constraint.ConstraintLayout>
-
-</ScrollView>
+</android.support.constraint.ConstraintLayout>

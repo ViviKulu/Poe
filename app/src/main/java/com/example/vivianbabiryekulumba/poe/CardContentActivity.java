@@ -3,17 +3,12 @@ package com.example.vivianbabiryekulumba.poe;
 import android.animation.Animator;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.example.vivianbabiryekulumba.poe.recyclerview.Poem;
@@ -33,11 +28,11 @@ public class CardContentActivity extends AppCompatActivity {
     TextView poem_title;
     TextView poem_content;
     DatabaseReference reference;
-    ImageButton imageButton;
+    ImageView imageView;
     View fabLayout;
-    FloatingActionButton fab_base, fab1, fab2, fab3, fab4;
+    TextView menu_tab, tab1, tab2, tab3, tab4;
     LinearLayout ll_base, ll1, ll2, ll3, ll4;
-    boolean isFABOpen = false;
+    boolean isMenuOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,54 +41,56 @@ public class CardContentActivity extends AppCompatActivity {
 
         poem_title = findViewById(R.id.card_poem_title);
         poem_content = findViewById(R.id.card_poem_content);
-        imageButton = findViewById(R.id.menu_image);
+        imageView = findViewById(R.id.raven);
 
-        fabLayout = findViewById(R.id.fabBGLayout);
-        ll_base = findViewById(R.id.fab_layout_base);
-        ll1 = findViewById(R.id.fab_layout_home);
-        ll2 = findViewById(R.id.fab_layout_explore);
-        ll3 = findViewById(R.id.fab_layout_my_work);
-        ll4 = findViewById(R.id.fab_layout_translate);
-        fab_base = findViewById(R.id.floating_button_base);
-        fab1 = findViewById(R.id.floating_button_home);
-        fab2 = findViewById(R.id.floating_button_explore);
-        fab3 = findViewById(R.id.floating_button_my_work);
-        fab4 = findViewById(R.id.floating_button_translate);
+        fabLayout = findViewById(R.id.menuBGLayout);
+        ll_base = findViewById(R.id.menu_layout_base);
+        ll1 = findViewById(R.id.tab_layout_1);
+        ll2 = findViewById(R.id.tab_layout_2);
+        ll3 = findViewById(R.id.tab_layout_3);
+        ll4 = findViewById(R.id.tab_layout_4);
+        menu_tab = findViewById(R.id.menu_tab);
+        tab1 = findViewById(R.id.tab1);
+        tab2 = findViewById(R.id.tab2);
+        tab3 = findViewById(R.id.tab3);
+        tab4 = findViewById(R.id.tab4);
 
         fabLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                closeFABMenu();
+                closeTabMenu();
             }
         });
 
-        fab_base.setOnClickListener(new View.OnClickListener() {
+        hideTabs(tab1, tab2, tab3, tab4);
+
+        menu_tab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isFABOpen){
-                    showFABMenu();
-                    fab1.setOnClickListener(new View.OnClickListener() {
+                if(!isMenuOpen){
+                    showTabMenu();
+                    tab1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(CardContentActivity.this, ThemePracticeActivity.class);
                             startActivity(intent);
                         }
                     });
-                    fab2.setOnClickListener(new View.OnClickListener() {
+                    tab2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(CardContentActivity.this, MyWorkActivity.class);
                             startActivity(intent);
                         }
                     });
-                    fab3.setOnClickListener(new View.OnClickListener() {
+                    tab3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             //Make retrofit to google translate api and translate current content from poet
                             //then with an intent take translated content to Card content activity.
                         }
                     });
-                    fab4.setOnClickListener(new View.OnClickListener() {
+                    tab4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(CardContentActivity.this, PoemActivity.class);
@@ -101,7 +98,7 @@ public class CardContentActivity extends AppCompatActivity {
                         }
                     });
                 }else{
-                    closeFABMenu();
+                    closeTabMenu();
                 }
             }
         });
@@ -139,9 +136,20 @@ public class CardContentActivity extends AppCompatActivity {
         reference.updateChildren(childUpdates);
     }
 
+    private void hideTabs(TextView tab1, TextView tab2, TextView tab3, TextView tab4) {
+        if (!isMenuOpen) {
+            tab1.setVisibility(View.INVISIBLE);
+            tab2.setVisibility(View.INVISIBLE);
+            tab3.setVisibility(View.INVISIBLE);
+            tab4.setVisibility(View.INVISIBLE);
+        }else{
+            showTabMenu();
+        }
+    }
 
-    private void showFABMenu(){
-        isFABOpen= true;
+
+    private void showTabMenu(){
+        isMenuOpen = true;
         ll_base.setVisibility(View.VISIBLE);
         ll1.setVisibility(View.VISIBLE);
         ll2.setVisibility(View.VISIBLE);
@@ -150,14 +158,14 @@ public class CardContentActivity extends AppCompatActivity {
         fabLayout.setVisibility(View.VISIBLE);
 
         ll_base.animate().rotationBy(360);
-        ll1.animate().translationY(-getResources().getDimension(R.dimen.standard_75));
-        ll2.animate().translationY(-getResources().getDimension(R.dimen.standard_150));
-        ll3.animate().translationY(-getResources().getDimension(R.dimen.standard_225));
-        ll3.animate().translationY(-getResources().getDimension(R.dimen.standard_300));
+        ll1.animate().translationY(-getResources().getDimension(R.dimen.standard_45));
+        ll2.animate().translationY(-getResources().getDimension(R.dimen.standard_65));
+        ll3.animate().translationY(-getResources().getDimension(R.dimen.standard_85));
+        ll3.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
     }
 
-    private void closeFABMenu(){
-        isFABOpen=false;
+    private void closeTabMenu(){
+        isMenuOpen =false;
         fabLayout.setVisibility(View.GONE);
         ll_base.animate().rotationBy(-360);
         ll1.animate().translationY(2);
@@ -166,12 +174,15 @@ public class CardContentActivity extends AppCompatActivity {
         ll4.animate().translationY(2).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
-
+                tab1.setVisibility(View.VISIBLE);
+                tab2.setVisibility(View.VISIBLE);
+                tab3.setVisibility(View.VISIBLE);
+                tab4.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                if(!isFABOpen){
+                if(!isMenuOpen){
                     ll1.setVisibility(View.GONE);
                     ll2.setVisibility(View.GONE);
                     ll3.setVisibility(View.GONE);
@@ -194,8 +205,8 @@ public class CardContentActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(isFABOpen){
-            closeFABMenu();
+        if(isMenuOpen){
+            closeTabMenu();
         }else{
             super.onBackPressed();
         }
