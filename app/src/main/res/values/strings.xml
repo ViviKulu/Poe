@@ -6,4 +6,10 @@
     <string name="see_your_work">See your work</string>
     <string name="todo">TODO</string>
     <string name="translate">Translate</string>
+    <string name="translate_poetry">Translate Poetry</string>
+    <string name="view_your_work">View Your Work</string>
+    <string name="exercise_thought">Exercise Thought</string>
+    <string name="menu">Menu</string>
+    <string name="save_this_draft_to_your_work">Save this draft to Your Work!</string>
+    <string name="home">Home</string>
 </resources>

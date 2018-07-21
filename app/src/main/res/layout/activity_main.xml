@@ -8,10 +8,24 @@
     tools:context=".PoemActivity">
 
 
+    <ImageButton
+        android:id="@+id/menu_image"
+        android:layout_width="77dp"
+        android:layout_height="69dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/poe_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="337dp"
+        android:layout_height="400dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,33 +33,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.299" />
 
-    <TextView
-        android:id="@+id/banner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
-        android:text="@string/five_daily_inspirations"
-        android:textColor="#fff"
-        android:textSize="35sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <include layout="@layout/content_main" />
 
     <View
-        android:id="@+id/fabBGLayout"
+        android:id="@+id/menuBGLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorTransBg"
         android:visibility="gone" />
 
     <LinearLayout
-        android:id="@+id/fab_layout_base"
+        android:id="@+id/menu_layout_base"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -54,24 +53,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floating_button_base"
+        <TextView
+            android:id="@+id/menu_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:src="@drawable/baseline_add_black_18dp"
-            android:backgroundTint="#FF5733"
-            android:theme="@style/Widget.Design.FloatingActionButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.965" />
+            android:text="@string/menu"
+            android:textColor="#001b61"
+            android:textSize="16sp"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/fab_layout_1"
+        android:id="@+id/tab_layout_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
@@ -80,24 +73,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floating_button_1"
+        <TextView
+            android:id="@+id/tab1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:backgroundTint="#FF5733"
-            android:src="@drawable/round_explore"
-            android:theme="@style/Widget.Design.FloatingActionButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.965" />
+            android:text="@string/exercise_thought"
+            android:textColor="#001b61"
+            android:textSize="16sp"/>
+
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/fab_layout_2"
+        android:id="@+id/tab_layout_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
@@ -106,24 +94,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floating_button_2"
+        <TextView
+            android:id="@+id/tab2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:backgroundTint="#FF5733"
-            android:src="@drawable/round_my_work"
-            android:theme="@style/Widget.Design.FloatingActionButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.965" />
+            android:text="@string/view_your_work"
+            android:textColor="#001b61"
+            android:textSize="16sp"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/fab_layout_3"
+        android:id="@+id/tab_layout_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
@@ -132,19 +114,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floating_button_3"
+        <TextView
+            android:id="@+id/tab3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:backgroundTint="#FF5733"
-            android:src="@drawable/round_translate"
-            android:theme="@style/Widget.Design.FloatingActionButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.965" />
+            android:text="@string/translate_poetry"
+            android:textColor="#001b61"
+            android:textSize="16sp"/>
 
     </LinearLayout>
 
