@@ -3,6 +3,7 @@ package com.example.vivianbabiryekulumba.poe;
 import android.animation.Animator;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,7 +32,6 @@ public class ThemePracticeActivity extends AppCompatActivity {
     LinearLayout ll_base, ll1, ll2, ll3;
     boolean isMenuOpen = false;
 
-    //Use bundle or intent extra to carry theme title to theme practice activity.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,18 +50,16 @@ public class ThemePracticeActivity extends AppCompatActivity {
         tab2 = findViewById(R.id.tab2);
         tab3 = findViewById(R.id.tab3);
 
-
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Theme theme = dataSnapshot.getValue(Theme.class);
-                theme_tv.setText(theme.getTheme());
                 Log.d(TAG, "onDataChange: " + theme);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+
             }
         };
         databaseReference.addValueEventListener(postListener);
