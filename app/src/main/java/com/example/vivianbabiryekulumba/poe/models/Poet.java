@@ -1,4 +1,4 @@
-package com.example.vivianbabiryekulumba.poe.recyclerview;
+package com.example.vivianbabiryekulumba.poe.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
