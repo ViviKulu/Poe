@@ -1,8 +1,7 @@
 package com.example.vivianbabiryekulumba.poe.network;
 
-import com.example.vivianbabiryekulumba.poe.recyclerview.Poem;
+import com.example.vivianbabiryekulumba.poe.models.Poem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

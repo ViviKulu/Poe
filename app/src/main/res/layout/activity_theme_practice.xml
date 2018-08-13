@@ -7,10 +7,26 @@
     android:background="#fff"
     tools:context=".ThemePracticeActivity">
 
-   <android.support.v7.widget.RecyclerView
-       android:id="@+id/theme_recycler_practice"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"/>
+   <TextView
+       android:id="@+id/theme_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="16dp"
+       android:layout_marginTop="32dp"
+       android:textColor="#000"
+       android:textSize="16sp"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+
+   <EditText
+       android:id="@+id/theme_practice_et"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="16dp"
+       android:hint="@string/what_comes_to_mind"
+       android:layout_marginTop="108dp"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
 
    <ImageButton
        android:id="@+id/menu_image"
@@ -75,6 +91,7 @@
 
    </LinearLayout>
 
+
    <LinearLayout
        android:id="@+id/tab_layout_2"
        android:layout_width="wrap_content"
@@ -89,7 +106,7 @@
           android:id="@+id/tab2"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="@string/view_your_work"
+          android:text="@string/save_exercise"
           android:textColor="#001b61"
           android:textSize="16sp"/>
 
@@ -109,30 +126,12 @@
           android:id="@+id/tab3"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="@string/translate_poetry"
+          android:text="@string/view_your_work"
           android:textColor="#001b61"
           android:textSize="16sp"/>
 
    </LinearLayout>
 
-   <LinearLayout
-       android:id="@+id/tab_layout_4"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
-       android:layout_marginBottom="16dp"
-       android:layout_marginEnd="8dp"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="parent">
 
-      <TextView
-          android:id="@+id/tab4"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/save_this_draft_to_your_work"
-          android:textColor="#001b61"
-          android:textSize="16sp"/>
-
-   </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

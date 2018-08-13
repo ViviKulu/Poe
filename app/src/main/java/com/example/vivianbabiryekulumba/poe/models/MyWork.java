@@ -1,5 +1,8 @@
-package com.example.vivianbabiryekulumba.poe.recyclerview;
+package com.example.vivianbabiryekulumba.poe.models;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
+@IgnoreExtraProperties
 public class MyWork {
 
     String exercise;

@@ -12,4 +12,6 @@
     <string name="menu">Menu</string>
     <string name="save_this_draft_to_your_work">Save this draft to Your Work!</string>
     <string name="home">Home</string>
+    <string name="save_exercise">Save Exercise</string>
+    <string name="what_comes_to_mind">What comes to mind ...</string>
 </resources>

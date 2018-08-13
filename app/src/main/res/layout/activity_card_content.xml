@@ -29,23 +29,28 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19">
+        app:layout_constraintVertical_bias="0.632">
 
         <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             app:cardBackgroundColor="#fff"
             app:cardCornerRadius="1dp"
             app:cardElevation="15dp"
+            app:cardUseCompatPadding="true"
             app:contentPadding="@dimen/cardview_compat_inset_shadow">
 
             <TextView
                 android:id="@+id/card_poem_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:textColor="#000"
                 android:textSize="16sp" />
@@ -54,6 +59,7 @@
                 android:id="@+id/card_poem_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="50dp"
                 android:textColor="#000"
                 android:textSize="16sp" />
@@ -125,7 +131,7 @@
             android:id="@+id/tab2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/view_your_work"
+            android:text="@string/exercise_thought"
             android:textColor="#001b61"
             android:textSize="16sp" />
 
@@ -145,30 +151,11 @@
             android:id="@+id/tab3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/translate_poetry"
+            android:text="@string/view_your_work"
             android:textColor="#001b61"
             android:textSize="16sp" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/tab_layout_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_behavior="com.vivianbabiryekulumba.poe.activities.utils.AnimationBehavior"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TextView
-            android:id="@+id/tab4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/save_this_draft_to_your_work"
-            android:textColor="#001b61"
-            android:textSize="16sp" />
-
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

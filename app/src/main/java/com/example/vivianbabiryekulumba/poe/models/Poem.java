@@ -1,4 +1,4 @@
-package com.example.vivianbabiryekulumba.poe.recyclerview;
+package com.example.vivianbabiryekulumba.poe.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.gson.annotations.Expose;

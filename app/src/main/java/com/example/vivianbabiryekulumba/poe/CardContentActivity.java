@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.vivianbabiryekulumba.poe.recyclerview.Poem;
+import com.example.vivianbabiryekulumba.poe.models.Poem;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,8 +30,8 @@ public class CardContentActivity extends AppCompatActivity {
     DatabaseReference reference;
     ImageView imageView;
     View fabLayout;
-    TextView menu_tab, tab1, tab2, tab3, tab4;
-    LinearLayout ll_base, ll1, ll2, ll3, ll4;
+    TextView menu_tab, tab1, tab2, tab3;
+    LinearLayout ll_base, ll1, ll2, ll3;
     boolean isMenuOpen = false;
 
     @Override
@@ -48,12 +48,10 @@ public class CardContentActivity extends AppCompatActivity {
         ll1 = findViewById(R.id.tab_layout_1);
         ll2 = findViewById(R.id.tab_layout_2);
         ll3 = findViewById(R.id.tab_layout_3);
-        ll4 = findViewById(R.id.tab_layout_4);
         menu_tab = findViewById(R.id.menu_tab);
         tab1 = findViewById(R.id.tab1);
         tab2 = findViewById(R.id.tab2);
         tab3 = findViewById(R.id.tab3);
-        tab4 = findViewById(R.id.tab4);
 
         fabLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,42 +60,36 @@ public class CardContentActivity extends AppCompatActivity {
             }
         });
 
-        hideTabs(tab1, tab2, tab3, tab4);
+        hideTabs(tab1, tab2, tab3);
 
         menu_tab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isMenuOpen){
+                if (!isMenuOpen) {
                     showTabMenu();
                     tab1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent(CardContentActivity.this, ThemePracticeActivity.class);
-                            startActivity(intent);
-                        }
-                    });
-                    tab2.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent(CardContentActivity.this, MyWorkActivity.class);
-                            startActivity(intent);
-                        }
-                    });
-                    tab3.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            //Make retrofit to google translate api and translate current content from poet
-                            //then with an intent take translated content to Card content activity.
-                        }
-                    });
-                    tab4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(CardContentActivity.this, PoemActivity.class);
                             startActivity(intent);
                         }
                     });
-                }else{
+                    tab2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(CardContentActivity.this, ThemePracticeActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                    tab3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(CardContentActivity.this, MyWorkActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+
+                } else {
                     closeTabMenu();
                 }
             }
@@ -136,12 +128,11 @@ public class CardContentActivity extends AppCompatActivity {
         reference.updateChildren(childUpdates);
     }
 
-    private void hideTabs(TextView tab1, TextView tab2, TextView tab3, TextView tab4) {
+    private void hideTabs(TextView tab1, TextView tab2, TextView tab3) {
         if (!isMenuOpen) {
             tab1.setVisibility(View.INVISIBLE);
             tab2.setVisibility(View.INVISIBLE);
             tab3.setVisibility(View.INVISIBLE);
-            tab4.setVisibility(View.INVISIBLE);
         }else{
             showTabMenu();
         }
@@ -154,14 +145,12 @@ public class CardContentActivity extends AppCompatActivity {
         ll1.setVisibility(View.VISIBLE);
         ll2.setVisibility(View.VISIBLE);
         ll3.setVisibility(View.VISIBLE);
-        ll4.setVisibility(View.VISIBLE);
         fabLayout.setVisibility(View.VISIBLE);
 
         ll_base.animate().rotationBy(360);
         ll1.animate().translationY(-getResources().getDimension(R.dimen.standard_45));
         ll2.animate().translationY(-getResources().getDimension(R.dimen.standard_65));
         ll3.animate().translationY(-getResources().getDimension(R.dimen.standard_85));
-        ll3.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
     }
 
     private void closeTabMenu(){
@@ -170,14 +159,12 @@ public class CardContentActivity extends AppCompatActivity {
         ll_base.animate().rotationBy(-360);
         ll1.animate().translationY(2);
         ll2.animate().translationY(2);
-        ll3.animate().translationY(2);
-        ll4.animate().translationY(2).setListener(new Animator.AnimatorListener() {
+        ll3.animate().translationY(2).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
                 tab1.setVisibility(View.VISIBLE);
                 tab2.setVisibility(View.VISIBLE);
                 tab3.setVisibility(View.VISIBLE);
-                tab4.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -186,7 +173,6 @@ public class CardContentActivity extends AppCompatActivity {
                     ll1.setVisibility(View.GONE);
                     ll2.setVisibility(View.GONE);
                     ll3.setVisibility(View.GONE);
-                    ll4.setVisibility(View.GONE);
                 }
 
             }
