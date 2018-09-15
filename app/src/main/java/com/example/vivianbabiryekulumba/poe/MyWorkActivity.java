@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.vivianbabiryekulumba.poe.models.Exercise;
-import com.example.vivianbabiryekulumba.poe.recyclerview.ExerciseViewHolder;
+import com.example.vivianbabiryekulumba.poe.views.ExerciseViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.ChildEventListener;
