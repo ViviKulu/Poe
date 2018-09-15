@@ -1,4 +1,4 @@
-package com.example.vivianbabiryekulumba.poe.recyclerview;
+package com.example.vivianbabiryekulumba.poe.controllers;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,9 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.vivianbabiryekulumba.poe.R;
 import com.example.vivianbabiryekulumba.poe.models.Poem;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.List;
 import static android.content.ContentValues.TAG;
 
@@ -34,22 +31,12 @@ public class PoemAdapter extends RecyclerView.Adapter<PoemAdapter.PoemViewHolder
     @Override
     public void onBindViewHolder(@NonNull PoemViewHolder holder, int position) {
         holder.onBind(poemList.get(position));
-
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference reference = firebaseDatabase.getReference();
-        reference.setValue(poemList.get(position));
-
-        Log.d(TAG, "onBindViewHolder: " + reference);
+        Log.d(TAG, "onBindViewHolder: ");
     }
 
     @Override
     public int getItemCount() {
-        if (poemList != null) {
-            return poemList.size();
-        } else {
-            Log.d(TAG, "getItemCount: out of data");
-        }
-        return 1;
+        return poemList.size();
     }
 
 

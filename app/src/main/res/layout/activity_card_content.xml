@@ -8,8 +8,6 @@
     android:fillViewport="true"
     tools:context=".CardContentActivity">
 
-    <include layout="@layout/content_main" />
-
     <ImageButton
         android:id="@+id/raven"
         android:layout_width="77dp"

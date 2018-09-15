@@ -41,8 +41,6 @@
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent" />
 
-   <include layout="@layout/content_main" />
-
    <View
        android:id="@+id/menuBGLayout"
        android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.example.vivianbabiryekulumba.poe.recyclerview;
+package com.example.vivianbabiryekulumba.poe.views;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

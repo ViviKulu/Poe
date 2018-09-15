@@ -3,7 +3,6 @@ package com.example.vivianbabiryekulumba.poe;
 import android.animation.Animator;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.vivianbabiryekulumba.poe.models.Exercise;
+import com.example.vivianbabiryekulumba.poe.models.Poem;
 import com.example.vivianbabiryekulumba.poe.models.Theme;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ThemePracticeActivity extends AppCompatActivity {
 
     private static final String TAG = "ThemePracticeActivity";
+    Poem poem;
     TextView theme_tv;
     EditText theme_practice_et;
     private DatabaseReference databaseReference;
@@ -70,6 +71,8 @@ public class ThemePracticeActivity extends AppCompatActivity {
                 closeTabMenu();
             }
         });
+
+
 
         hideTabs(tab1, tab2, tab3);
 
