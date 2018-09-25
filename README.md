@@ -14,6 +14,6 @@ Frameworks/Libraries:
 ---------------------
 The database to store user exercises is implemented using Google's Room Persistence Library.
 Android Studio XML and material design implementations support user navigation throughout the application ensuring the user
-does not run into any issues getting from one tab to the next.
+does not run into any issues getting from one screen to the next.
 GET requests run through Retrofit2 to RESTful api, Poemist for creative writing inspirations.
 
