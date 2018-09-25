@@ -2,7 +2,7 @@ Poe
 ====
 Obective of mobile application:
 -------------------------------
-Poe provides a platform for creative writing inspiration and technique practice.
+Poe provides a platform for creative writing inspiration and technical practice.
 The objective is to ensure that its users have a set safe space to get inspired and practice creative writing 
 exercises at their own convenience.
 
